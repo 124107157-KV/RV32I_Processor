@@ -4,6 +4,10 @@
 The **RV32I Processor** is a simplified implementation of the 32-bit RISC-V instruction set architecture (ISA), designed to execute basic instructions, including arithmetic, logical, memory access, and control transfer operations. This processor is modular, making it easy to understand, extend, and customize.
 
 ---
+![image](https://github.com/user-attachments/assets/03d0ee44-b699-40b9-a0d0-ce2f74ac334c)
+
+
+---
 
 ## Features
 
