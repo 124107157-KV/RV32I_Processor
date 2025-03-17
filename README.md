@@ -4,8 +4,44 @@
 The **RV32I Processor** is a simplified implementation of the 32-bit RISC-V instruction set architecture (ISA), designed to execute basic instructions, including arithmetic, logical, memory access, and control transfer operations. This processor is modular, making it easy to understand, extend, and customize.
 
 ---
-![image](https://github.com/user-attachments/assets/03d0ee44-b699-40b9-a0d0-ce2f74ac334c)
 
+                          +-----------------------+
+                          |      Instruction      |
+                          |        Fetch (IF)     |
+                          |-----------------------|
+                          |  Inputs: clk, reset,  |
+                          |  branch/jump signals, |
+                          |  instruction mem blk  |
+                          |  Outputs: PC, Instr   |
+                          +-----------+-----------+
+                                      |
+                                      V
+                          +-----------------------+
+                          |     Control Unit      |
+                          |        (CU)           |
+                          |-----------------------|
+                          |  Inputs: Opcode,      |
+                          |  funct3, funct7       |
+                          |  Outputs: Control     |
+                          |  signals (reg_write,  |
+                          |  mem_read, etc.)      |
+                          +-----------+-----------+
+                                      |
+                    +-----------------+-----------------+
+                    |                                   |
+                    V                                   V
+         +----------------------+           +-----------------------+
+         |    Register File     |           |          ALU          |
+         |         (RF)         |           |                       |
+         |----------------------|           |  Inputs: operand_a,   |
+         |  Inputs: clk, reset, |           |  operand_b, alu_ctrl  |
+         |  rs1, rs2, rd,       |           |  Outputs: alu_result, |
+         |  write_data, reg_wr  |           |  flags (zero, etc.)   |
+         |  Outputs: read_data1,|           +-----------+-----------+
+         |  read_data2          |                       |
+         +----------------------+                       |
+                    |                                  (Branch, jump,
+                    +------------> Write Back <--------- results, etc.)
 
 ---
 
